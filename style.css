@@ -1,0 +1,54 @@
+/* --- Destination Section Fix (standardized responsive images) --- */
+
+.dest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.dest-card {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dest-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Standardized image sizing:
+   - width 100% so image fills card width
+   - height uses clamp() for consistent visual height across viewports
+   - object-fit: cover keeps aspect and crops cleanly
+*/
+.dest-card img {
+  display: block;
+  width: 100%;
+  height: clamp(160px, 22vw, 250px); /* min, preferred (responsive), max */
+  object-fit: cover;
+  object-position: center;
+  border-bottom: 3px solid #ff7b00;
+}
+
+/* Text styles */
+.dest-card h3 {
+  margin: 15px 0 5px;
+  font-size: 1.2rem;
+  color: #222;
+}
+
+.dest-card p {
+  font-size: 0.95rem;
+  color: #555;
+  padding: 0 10px 15px;
+}
+
+/* Responsive tweaks (optional) */
+@media (max-width: 768px) {
+  .dest-card img {
+    height: clamp(140px, 28vw, 180px);
+  }
+}
